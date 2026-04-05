@@ -1,0 +1,20 @@
+<a href="/">← Back</a>
+
+<h1>Edit Todo</h1>
+
+{{#if error}}
+  <div style="color: red; margin-bottom: 10px;">{{error}}</div>
+{{/if}}
+
+<form action="/todos/{{todo.id}}/edit" method="POST" style="margin: 20px 0;">
+  <label>Todo text:</label>
+  <textarea name="text" rows="4" maxlength="500" required style="width: 100%; padding: 5px; margin: 10px 0;" autofocus>{{todo.text}}</textarea>
+  <div style="margin-bottom: 10px;">
+    <strong>Created:</strong> {{formatDate todo.createdAt}} | 
+    <strong>Status:</strong> {{#if todo.completed}}Completed{{else}}Pending{{/if}}
+  </div>
+  <div style="margin-top: 15px;">
+    <a href="/" style="margin-right: 10px;">Cancel</a>
+    <button type="submit">Save changes</button>
+  </div>
+</form>
